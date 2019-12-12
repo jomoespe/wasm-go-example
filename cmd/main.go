@@ -18,7 +18,7 @@ var (
 )
 
 func init() {
-	// the log.Println goes to console log
+	// the log.Println and the fmt.Print goes to console log
 	log.Println("Module loaded")
 	fmt.Printf("and can write using %s\n", "fmt")
 }
@@ -27,10 +27,14 @@ func main() {
 	// register/export functions to JavaScript Global context
 	js.Global().Set("goFunction", js.FuncOf(fromJsToGo))
 
+	// create an element (an H2) and append to docuemnt body
+	h2 := js.Global().Get("document").Call("createElement", "h2")
+	h2.Set("innerHTML", "this element have been created from WASM")
+	js.Global().Get("document").Get("body").Call("appendChild", h2)
+
 	buttonClicked := js.FuncOf(func(this js.Value, args []js.Value) interface{} {
-		output.Set("innerHTML", "from bound event")
-		return nil
-			//cb.Release() // release the function if the button will not be clicked again
+		output.Set("innerHTML", "from event bound in WASM")
+		//buttonClicked.Release() // release the function if the button will not be clicked again
 		return nil
 	})
 	js.Global().Get("document").Call("querySelector", "#button-2").Call("addEventListener", "click", buttonClicked)
@@ -38,8 +42,7 @@ func main() {
 	// Call a function in the main that will interact with the DOM
 	fromGoToDOM()
 
-	// As this is an all, it run and end. To keep it alive (don't exit)
-	// we create a channel and wait foerver
+	// To keep it alive (don't exit) we create a channel and wait foerver
 	c := make(chan bool)
 	<-c
 }
