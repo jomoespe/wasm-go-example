@@ -2,7 +2,7 @@
 
 This is aa example of WebAseembly, compiled from Golang code.
 
-## Requisites
+## Requisites
 
 - [Go 1.13](https://golang.org) as programming language
 - [Makefile](https://www.gnu.org/software/make/) as build automation tool.
