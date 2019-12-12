@@ -1,0 +1,5 @@
+localhost:80 {
+    gzip
+    tls self_signed
+    mime  .wasm application/wasm
+}

@@ -1,0 +1,15 @@
+html {
+    font-family: "Helvetica Neue", "Arial", sans-serif;
+    font-size: 1.2rem;
+}
+
+h1 {
+    font-variant-ligatures: normal;
+    letter-spacing: 1px;
+    font-size: 2rem;
+    font-style: italic;
+    font-weight: 100;
+    color: darkslategrey;
+    margin: 0 auto;
+    padding-bottom: 1rem;
+}
