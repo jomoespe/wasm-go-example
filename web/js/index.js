@@ -8,4 +8,4 @@ WebAssembly.instantiateStreaming(fetch("js/main.wasm"), go.importObject)
     });
 
 // event handler that will call a function in WASM
-document.querySelector("#button-1").onclick = event => goFunction("from JS")
+document.querySelector("#button-1").onclick = event => goFunction("from JS -> WASM")
