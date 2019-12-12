@@ -9,7 +9,7 @@ wasm:
 
 .PHONY: web
 web:
-	@ cp $(shell go env GOROOT)/misc/wasm/wasm_exec.js web/js/wasm_exec.js
+	@ cp $(shell go env GOROOT)/misc/wasm/wasm_exec.js main.wasm web/js/
 
 clean:
 	@ if [ -f main.wasm ] ; then  rm main.wasm; fi;
@@ -19,7 +19,6 @@ clean:
 run: all
 	@ docker run --rm \
             -v $(shell pwd)/configs/Caddyfile:/etc/Caddyfile:ro \
-            -v $(shell pwd)/main.wasm:/srv/js/main.wasm:ro \
             -v $(shell pwd)/web:/srv:ro \
             -p 80:80 \
             abiosoft/caddy
