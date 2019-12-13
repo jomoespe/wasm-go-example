@@ -5,22 +5,24 @@ found in the LICENSE file.
 -->
 <!doctype html>
 <html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="description" content="An example of WebAssembly generated from a go program">
-  <meta name="author" content="jomoespe">
+<meta charset="utf-8">
+<meta name="description" content="An example of WebAssembly generated from a Go program">
+<meta name="author" content="jomoespe">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Go WebAssembly example</title>
+<title>Go WebAssembly example</title>
 
-  <link rel="stylesheet" href="css/styles.css">
-  <script src="js/wasm_exec.js" defer></script>
-  <script src="js/index.js" defer></script>
-</head>
+<link rel="stylesheet" href="css/styles.css">
+<link rel="shortcut icon" href="icon-256x256.png">
+
+<script src="js/wasm_exec.js" asyn></script>
+<script src="js/index.js" defer></script>
 
 <body>
-    <h1>WebAssembly example</h1>
-    <div id="output"></div>
-    <button id="button-1">Call WASM</button>
-    <button id="button-2">Handler bound from WASM</button>
+  <h1>WebAssembly example</h1>
+  <div id="output"></div>
+  <button id="button-1">Call WASM</button>
+  <button id="button-2">Handler bound from WASM</button>
 </body>
 </html>
