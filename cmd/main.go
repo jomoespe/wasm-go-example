@@ -31,6 +31,15 @@ func main() {
 	// register/export functions to JavaScript Global context
 	js.Global().Set("goFunction", js.FuncOf(fromJsToGo))
 
+	// Create a button, bind event and add to DOM
+	button := js.Global().Get("document").Call("createElement", "button")
+	button.Set("innerText", "Button from WASM")
+	js.Global().Get("document").Get("body").Call("appendChild", button)
+	button.Call("addEventListener", "click", js.FuncOf(func(this js.Value, args []js.Value) interface{} {
+		output.Set("innerHTML", "from WASM button")
+		return nil
+	}))
+
 	// create an element (an H2) and append to docuemnt body
 	h2 := js.Global().Get("document").Call("createElement", "h2")
 	h2.Set("innerHTML", "this element have been created from WASM")
